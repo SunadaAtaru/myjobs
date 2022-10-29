@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :posts, dependent: :destroy   #この行を追記
-  has_many :comments, dependent: :destroy  #この行を追記
+  has_many :posts, dependent: :destroy   
+  has_many :comments, dependent: :destroy  
+  has_many :favorites, dependent: :destroy   
 
 end
