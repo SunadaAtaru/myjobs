@@ -70,6 +70,12 @@ gem 'bootstrap', '~> 4.5'
 
 gem 'jquery-rails'
 
+
 gem 'devise'
 
 gem 'kaminari','~> 1.2.1'
+
+gem 'devise-i18n'
+
+gem 'kaminari','~> 1.2.1'
+
