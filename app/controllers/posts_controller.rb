@@ -2,10 +2,8 @@ class PostsController < ApplicationController
 
   def index
     # @posts = Post.all
-
     @posts = Post.page(params[:page]).reverse_order  #この行を記述
-
-    @posts = Post.page(params[:page]).reverse_order 
+    # @posts = Post.page(params[:page]).reverse_order 
 
   end
 
@@ -36,9 +34,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    post.save
-    redirect_to post_path(post.id)
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
+    if @post.save
+     redirect_to post_path(@post.id)
+    else
+      render :new
+    end
   end
 
   private
