@@ -14,8 +14,7 @@
  *= require_self
  */
  @import "bootstrap";
-
-
+  
   header {
     display: flex;
     background-color: black;
@@ -44,6 +43,8 @@
     width: 130px;
     height: 40px;
   }
+
+  
 
   .profile-img {
     border-radius: 50%;

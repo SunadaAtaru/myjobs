@@ -85,3 +85,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'dotenv-rails'
 
 gem 'faker'
+
+gem 'pry-rails'
+
+gem 'rails-i18n'
