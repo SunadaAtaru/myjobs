@@ -89,3 +89,7 @@ gem 'faker'
 gem 'pry-rails'
 
 gem 'rails-i18n'
+
+gem 'pg', group: :production
+
+# gem 'sqlite3', '~>1.3.6', group: :development 
