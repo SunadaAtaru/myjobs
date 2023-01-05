@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user! #1/4追記
 
   def create
     post = Post.find(params[:post_id])

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy #12/24追記
+  # before_action :correct_user, only: [:edit, :update]#1/1追記
 
 
   def index
@@ -52,6 +53,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :profile, :profile_image)
 
   end
+
+  # def correct_user
+  #   redirect_to(root_url) unless current_user?(@user)
+  # end
 
   def admin_user
     redirect_to(root_url) unless current_user.admin?

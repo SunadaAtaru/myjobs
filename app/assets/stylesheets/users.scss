@@ -5,19 +5,20 @@
 .cover-user-show {
   height: 100%;
   width: 100%;
-  background-image: url(/assets/sample6.jpg);
+  // background-image: url(/assets/sample6.jpg);
   background-color: rgba(255, 255, 255, 0.4);
   background-blend-mode: lighten;
   background-size: 100% 100%;
   margin: 0;
   padding: 0;
+  display: block;
 }
 
  .cover-user-index {
 //  .container {
   height: 100%; 
   width: 100%;
-  background-image: url(/assets/sample7.jpg);
+  // background-image: url(/assets/sample7.jpg);
   background-color: rgba(255, 255, 255, 0.4);
   background-blend-mode: lighten;
   background-size: 100% 100%;
@@ -26,7 +27,7 @@
 .cover-user-edit {
   height: 100%;
   width: 100%;
-  background-image: url(/assets/sample8.jpg);
+  // background-image: url(/assets/sample8.jpg);
   background-color: rgba(255, 255, 255, 0.4);
   background-blend-mode: lighten;
   background-size: 100% 100%;
