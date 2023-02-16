@@ -29,7 +29,7 @@ class User < ApplicationRecord
   # 以上を追加       
 
   has_many :posts, dependent: :destroy   
-  has_many :comments, dependent: :destroy  
+  # has_many :comments, dependent: :destroy  
   has_many :favorites, dependent: :destroy 
   validates :name, presence: true  #追記10/29
   attachment :profile_image

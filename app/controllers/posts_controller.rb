@@ -9,8 +9,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comment = Comment.new  #この行を追記
-    @comments = @post.comments.page(params[:page]).per(7).reverse_order  #この行を追記
+    # @comment = Comment.new  #この行を追記
+    # @comments = @post.comments.page(params[:page]).per(7).reverse_order  #この行を追記
   end
 
   def edit

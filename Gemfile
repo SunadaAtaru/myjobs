@@ -94,3 +94,5 @@ gem 'pg', group: :production
 
 # gem 'sqlite3', '~>1.3.6', group: :development 
 gem 'bootstrap-will_paginate'
+
+gem 'pry-byebug', group: :development
