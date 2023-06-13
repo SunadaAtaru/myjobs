@@ -1,5 +1,10 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]  #5/14修正
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user!, only: [:edit, :update, :destroy]
+
+
   def index
     # @posts = Post.all
     @posts = Post.page(params[:page]).reverse_order  #この行を記述
@@ -8,24 +13,32 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
     # @comment = Comment.new  #この行を追記
     # @comments = @post.comments.page(params[:page]).per(7).reverse_order  #この行を追記
   end
 
   def edit
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update(post_params)
-    redirect_to post_path(post.id)
+    if @post.update(post_params)
+      redirect_to post_path(@post.id)
+    else
+      render :edit
+    end
   end
 
+  # def update
+  #   # post = Post.find(params[:id]) 5/14修正
+  #   post.update(post_params)
+  #   redirect_to post_path(post.id)
+  # end
+
   def destroy
-    post = Post.find(params[:id])
-    post.destroy
+    # post = Post.find(params[:id]) 5/14この行を削除
+    @post.destroy 
     redirect_to posts_path
   end
 
@@ -34,16 +47,44 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
-    if @post.save
-     redirect_to post_path(@post.id)
+    if current_user.admin?
+      flash[:alert] = "管理者は投稿を作成できません。"
+      redirect_to posts_path # redirect_to root_path 
     else
-      render :new
+      @post = Post.new(post_params)
+      @post.user_id = current_user.id
+      if @post.save
+        redirect_to post_path(@post.id)
+      else
+        render :new
+      end
+    end
+  end
+  
+
+  # def create
+  #   @post = Post.new(post_params)
+  #   @post.user_id = current_user.id
+  #   if @post.save
+  #    redirect_to post_path(@post.id)
+  #   else
+  #     render :new
+  #   end
+  # end
+
+  private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def authorize_user!
+    unless current_user == @post.user 
+      flash[:alert] = "この操作を実行する権限がありません。"
+      redirect_to root_path
     end
   end
 
-  private
   def post_params
     params.require(:post).permit(:location, :text, :image)
   end

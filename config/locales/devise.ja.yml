@@ -1,6 +1,21 @@
-ja:
+# ja:
+#   activerecord:
+#     attributes:
+#       user:
+#         name: '名前'
+ja:    #5/15追加
   activerecord:
     attributes:
       user:
         name: '名前'
+  devise:
+    registrations:
+      signed_up: "アカウント登録が完了しました。"
+      signed_up_but_unconfirmed: "メールアドレスの確認リンクが送信されました。リンクをクリックしてアカウントを有効化してください。"
+      # 他のメッセージも追加できます
+    sessions:
+      signed_in: "ログインしました。"
+      signed_out: "ログアウトしました。"
+      # 他のメッセージも追加できます
+    # 他のモジュールのメッセージもカスタマイズできます
           

@@ -1,17 +1,23 @@
 class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy #12/24追記
   # before_action :correct_user, only: [:edit, :update]#1/1追記
+  before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
+  
+  
+  # ユーザー一覧で、adminを表示させないようにする
+  # def index 
 
 
-  def index
-    @users = User.page(params[:page]).per(2).reverse_order
-  end
 
-  # def show
-  #   @user = User.find(params[:id])
-  #   @posts = @user.posts.page(params[:page]).reverse_order
-
+  
+  # def index
+  #   @users = User.where(admin: false).page(params[:page]).per(2).reverse_order
   # end
+  
+  def index
+    @users = User.page(params[:page]).per(2).where(admin: false).reverse_order
+  end
+  
 
   def destroy
     @user = User.find(params[:id])

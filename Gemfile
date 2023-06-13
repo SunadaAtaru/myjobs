@@ -77,7 +77,7 @@ gem 'kaminari','~> 1.2.1'
 
 gem 'devise-i18n'
 
-gem 'kaminari','~> 1.2.1'
+# gem 'kaminari','~> 1.2.1'
 
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
@@ -95,4 +95,4 @@ gem 'pg', group: :production
 # gem 'sqlite3', '~>1.3.6', group: :development 
 gem 'bootstrap-will_paginate'
 
-gem 'pry-byebug', group: :development
+# gem 'pry-byebug', group: :development

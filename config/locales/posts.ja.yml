@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        location: "場所"
+        text: "感想"
+        image: "画像画像"
+
+

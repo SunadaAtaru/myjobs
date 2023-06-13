@@ -1,16 +1,25 @@
-<h2>パスワードを忘れましたか?</h2>
+<div class="box1">
+  <div class="box-inner">
+    <h2>パスワードを忘れましたか?</h2>
+    <%# <%= form_with model: resource, as: resource_name, url: password_path(resource_name), html: { method: :post } do |f| %> 
+    <%= form_with model: resource, as: resource_name, url: password_path(resource_name), local: true, html: { method: :post } do |f| %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%# <% if resource.errors.any? %>
+        <%# <div class="error_messages"> %>
+          <%# <%= resource.errors.full_messages.join(', ') %> 
+        <%# </div> %>
+      <%# <% end %> 
+
+      <div class="box-email">
+        <%= f.label :email, "メールアドレス" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'box-name' %>
+      </div>
+
+      <div class="box-login">
+        <%= f.submit "パスワードリセットの手順を受け取る", class: 'box-login' %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "パスワードリセットの手順を受け取る" %>
-  </div>
-<% end %>
-
-<%# <%= render "devise/shared/links" %> 
+</div>

@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
  @import "bootstrap";
   
   header {
@@ -35,8 +36,11 @@
   }
   
  .container{
+    //  margin-top: 50px; 
      margin-bottom: 0px;
    }
+   
+
   a:hover {
     text-decoration: none;
     font-size: larger;
@@ -71,4 +75,42 @@ body {
 .profiler-results {
   display: none;
 }
+
+div.my-error-message,
+li.my-error-message {
+  color: #dc3545;  // you can set the color as per your requirement
+}
+
+div.my-success-message,
+li.my-success-message {
+  color: #28a745;  // success color as per Bootstrap's color scheme
+}
+
+.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.form-container  {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
