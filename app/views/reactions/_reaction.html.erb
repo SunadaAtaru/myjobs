@@ -1,0 +1,40 @@
+<%# <div id="reaction-buttons-<%= post.id %>
+  <%# <% ["like", "thanks", "awesome"].each do |type| %> 
+   <%# <% if current_user.reacted?(post, type) %>  
+    <%# <% if reaction.present? %>
+      <%# <%= link_to _path(post_id: post.id, reaction_type: type), method: :delete, remote: true, class: "btn btn-primary" do %> 
+      <%# <%= link_to post_reaction_path(id: reaction.id, post_id: post.id), method: :delete, remote: true, class: "btn btn-primary" do %> 
+        <%# <i class="fa <%= reaction_icon(type)"></i> <%= type.capitalize %> 
+      <%# <% end %> 
+    <%# <% else %> 
+      <%# <%= link_to reactions_path(post_id: post.id, reaction_type: type), method: :post, remote: true, class: "btn btn-outline-primary" do %> 
+      <%# <%= link_to post_reactions_path(post_id: post.id, reaction_type: type), method: :post, remote: true, class: "btn btn-outline-primary" do %> 
+
+        <%# <i class="fa <%= reaction_icon(type)"></i> <%= type.capitalize %> 
+      <%# <% end %> 
+    <%# <% end %> 
+  <%# <% end %> 
+<%# </div> %> 
+<%# <div id="reaction-buttons-<%= post.id %>
+  <%# <% ["like", "thanks", "awesome"].each do |type| %> 
+  <div id="reaction-button-<%= type %>_<%= post.id %>">
+    <% reaction = current_user.reactions.find_by(post_id: post.id, reaction_type: type) %>
+    <% if reaction.present? %>
+      <%= link_to post_reaction_path(id: reaction.id, post_id: post.id, reaction_type: type), method: :delete, remote: true, class: "btn reacted-#{type}" do %>
+      <%#上記に上記に , reaction_type: typeを書き加えた。 %>
+       <!-- reaction_icon のあとの type.capitalize を Rails.application.config.reaction_labels[type] に置き換えます -->
+        <i class="fa <%= reaction_icon(type) %>"></i> <%= Rails.application.config.reaction_labels[type] %>
+        <!-- ここにリアクションの数を表示します -->
+        <span><%= post.reactions.where(reaction_type: type).count %></span>
+    <% end %>    
+    <% else %>
+      <%= link_to post_reactions_path(post_id: post.id, reaction_type: type), method: :post, remote: true, class: "btn reacted-#{type}-outline" do %>
+        <!-- ここでも同じ置き換えを行います -->
+        <i class="fa <%= reaction_icon(type) %>"></i> <%= Rails.application.config.reaction_labels[type] %>
+        <!-- リアクションがない場合でも、その数を0として表示します -->
+        <span>0</span>
+      <% end %>
+    <% end %>
+  </div>
+  <%# <% end %> 
+<%# </div> %>

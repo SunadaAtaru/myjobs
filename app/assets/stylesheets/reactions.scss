@@ -1,0 +1,43 @@
+// Place all the styles related to the Reactions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// .reacted-like {
+//   color: #f00; /* likeの色を設定 */
+// }
+
+// .reacted-thanks {
+//   color: #0f0; /* thanksの色を設定 */
+// }
+
+// .reacted-awesome {
+//   color: #00f; /* awesomeの色を設定 */
+// }
+// .reaction-button {
+//   border: none;
+// }
+.reacted-like i {
+  color: #f00; /* likeの色を設定 */
+  text-decoration: none; /* リンクの下線を削除 */
+}
+
+.reacted-thanks i {
+  color: #0f0; /* thanksの色を設定 */
+  text-decoration: none; /* リンクの下線を削除 */
+}
+
+.reacted-awesome i {
+  color: #00f; /* awesomeの色を設定 */
+  text-decoration: none; /* リンクの下線を削除 */
+}
+
+.reaction-button i {
+  border: none;
+  text-decoration: none; /* リンクの下線を削除 */
+}
+
+.reacted-like-outline i,
+.reacted-thanks-outline i,
+.reacted-awesome-outline i {
+  color: #000; /* リアクションが無いときの色を設定 */
+}

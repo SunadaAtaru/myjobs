@@ -12,11 +12,30 @@ class PostsController < ApplicationController
 
   end
 
+  # def show
+  #   # @post = Post.find(params[:id])
+  #   # @comment = Comment.new  #この行を追記
+  #   # @comments = @post.comments.page(params[:page]).per(7).reverse_order  #この行を追記
+
+  # end
   def show
-    # @post = Post.find(params[:id])
-    # @comment = Comment.new  #この行を追記
-    # @comments = @post.comments.page(params[:page]).per(7).reverse_order  #この行を追記
+    # この投稿についている全てのリアクションを取得します。
+    @reactions = @post.reactions
+  
+    # 各リアクションの種類ごとに数をカウントします。
+    @like_count = @reactions.where(reaction_type: 'like').count
+    @thanks_count = @reactions.where(reaction_type: 'thanks').count
+    @awesome_count = @reactions.where(reaction_type: 'awesome').count
+  
+    # 現在のユーザーがすでにつけたリアクションを取得します。
+    @user_reactions = @reactions.where(user: current_user)
+  
+    # 現在のユーザーが各リアクションをすでにつけているかどうかを確認します。
+    @user_has_liked = @user_reactions.where(reaction_type: 'like').exists?
+    @user_has_thanked = @user_reactions.where(reaction_type: 'thanks').exists?
+    @user_has_awesomed = @user_reactions.where(reaction_type: 'awesome').exists?
   end
+  
 
   def edit
     # @post = Post.find(params[:id])

@@ -30,7 +30,9 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy   
   # has_many :comments, dependent: :destroy  
-  has_many :favorites, dependent: :destroy 
+  # has_many :favorites, dependent: :destroy 
+  has_many :reactions, dependent: :destroy
+  # has_many :reactions, dependent: :destroy
   validates :name, presence: true  #追記10/29
   attachment :profile_image
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -52,4 +54,13 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
+
+  def reacted?(post, type)
+    reactions.where(post_id: post.id, reaction_type: type).exists?
+  end
+
+  def reaction_to(post, type)
+    self.reactions.find_by(post: post, reaction_type: type)
+  end
+  
 end

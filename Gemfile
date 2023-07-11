@@ -96,3 +96,4 @@ gem 'pg', group: :production
 gem 'bootstrap-will_paginate'
 
 # gem 'pry-byebug', group: :development
+gem 'font-awesome-sass'

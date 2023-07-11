@@ -1,0 +1,5 @@
+<%# // destroy.js.erb %>
+<%# $("#reaction-buttons-<%= @post.id").html("<%= j(render 'reactions/reaction', post: @post) %>
+<% ["like", "thanks", "awesome"].each do |type| %>
+  $("#reaction-button-<%= type %>_<%= @post.id %>").html("<%= j(render 'reactions/reaction', post: @post, type: type) %>");
+<% end %>

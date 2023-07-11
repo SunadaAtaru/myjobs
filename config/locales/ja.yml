@@ -6,3 +6,10 @@ ja:
         previous: '前'
         next: '次'
         truncate: '...'
+  reactions:
+    create:
+      success: 'リアクションが正常に作成されました。'
+      failure: 'リアクションの作成に失敗しました。'
+    destroy:
+      success: 'リアクションが正常に削除されました。'
+      failure: 'リアクションの削除に失敗しました。'
